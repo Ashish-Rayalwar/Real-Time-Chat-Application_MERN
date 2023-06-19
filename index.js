@@ -8,10 +8,10 @@ require("dotenv").config();
 const path = require("path");
 
 const PORT = process.env.PORT || 5000;
-const userRoutes = require("./server/src/routes/userRoutes");
 
 ////////////////////// Socket.io Connection \\\\\\\\\\\\\\\\\\\\\\\\\\
 const socket = require("socket.io");
+const userRoutes = require("./server/src/routes/userRoutes");
 const userModel = require("./server/src/model/userModel");
 
 app.use(cors());
