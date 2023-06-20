@@ -37,10 +37,7 @@ const server = app.listen(PORT, () => {
   console.log(`Server Running on ${PORT}`);
 });
 
-app.get("*", (req, res) => {
-  const file = path.join(__dirname, "./server/build/index.html");
-  res.sendFile(file);
-});
+
 
 /////////////////////// Socket Operation \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -95,4 +92,9 @@ io.on("connection", (socket) => {
     //-->Broadcasting Offline User
     socket.broadcast.emit("getOfflineUser", { user_id: iD });
   });
+});
+
+app.get("*", (req, res) => {
+  const file = path.join(__dirname, "./server/build/index.html");
+  res.sendFile(file);
 });
