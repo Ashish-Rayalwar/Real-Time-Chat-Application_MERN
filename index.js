@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const app = express();
 require("dotenv").config();
 // const userModel = require("./server/src/model/userModel");
+const userRoutes = require("./server/src/routes/userRoutes");
+const userModel = require("./server/src/model/userModel");
 
 const path = require("path");
 
@@ -11,8 +13,6 @@ const PORT = process.env.PORT || 5000;
 
 ////////////////////// Socket.io Connection \\\\\\\\\\\\\\\\\\\\\\\\\\
 const socket = require("socket.io");
-const userRoutes = require("./server/src/routes/userRoutes");
-const userModel = require("./server/src/model/userModel");
 
 app.use(cors());
 
