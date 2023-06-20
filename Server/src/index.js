@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const app = express();
 require("dotenv").config();
 // const userModel = require("./server/src/model/userModel");
-const userRoutes = require("./server/src/routes/userRoutes");
-const userModel = require("./server/src/model/userModel");
+const userRoutes = require("./routes/userRoutes");
+const userModel = require("./model/userModel");
 
 const path = require("path");
 
@@ -17,7 +17,7 @@ const socket = require("socket.io");
 app.use(cors());
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "./server/build")));
+app.use(express.static(path.join(__dirname, "../build")));
 app.use("/api/auth", userRoutes);
 app.use("/api/messages", userRoutes);
 
@@ -36,8 +36,6 @@ mongoose
 const server = app.listen(PORT, () => {
   console.log(`Server Running on ${PORT}`);
 });
-
-
 
 /////////////////////// Socket Operation \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -95,6 +93,6 @@ io.on("connection", (socket) => {
 });
 
 app.get("*", (req, res) => {
-  const file = path.join(__dirname, "./server/build/index.html");
+  const file = path.join(__dirname, "../build/index.html");
   res.sendFile(file);
 });
